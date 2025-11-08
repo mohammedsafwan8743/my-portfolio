@@ -952,3 +952,19 @@ img {
     height: 260px;
   }
 }
+
+/* --- Fix hero layout order --- */
+.hero-container {
+  display: flex;
+  flex-direction: row;       /* default order */
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+/* On mobile, stack naturally */
+@media (max-width: 960px) {
+  .hero-container {
+    flex-direction: column;  /* stack portrait under summary on small screens */
+  }
+}
