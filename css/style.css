@@ -448,3 +448,164 @@ a:focus, input:focus, textarea:focus{outline:3px solid rgba(14,165,164,0.12);out
   box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
 
+/* -----------------------
+   Responsive / Mobile fixes
+   Paste at end of css/style.css
+   ----------------------- */
+
+/* global helpful reset for box sizing */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* make containers fluid on small screens */
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+/* Mobile first tweaks for text readability */
+body {
+  font-size: 15px; /* a bit smaller for mobile */
+  line-height: 1.45;
+}
+
+/* Header: stack nav and brand on small screens */
+@media (max-width: 900px) {
+  .unslate_co--site-nav, .site-header {
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  /* center the brand and move nav below */
+  .header-inner, .unslate_co--site-nav .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .brand, .unslate_co--site-logo {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  /* hide long desktop nav, toggle to mobile menu */
+  .site-nav-ul { display: none !important; }
+
+  /* show simple menu link (if you have a .js-menu-toggle) */
+  .site-nav-ul-none-onepage { display: inline-block !important; }
+}
+
+/* HERO / profile area: stack vertically on mobiles */
+.hero-section, .cover-v1, .hero-wrap, .hero {
+  padding-top: 48px;
+  padding-bottom: 40px;
+}
+
+/* Example layout: right = portrait, left = text.
+   Force stack on mobile */
+@media (max-width: 900px) {
+  .hero-right, .hero-left, .hero-content {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* if your hero layout used flex, force column */
+  .hero, .hero-section .container > .row, .row.hero-row, .hero-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 16px;
+  }
+
+  /* profile image - larger but responsive */
+  .profile-photo, .profile-pic, .hero-img {
+    width: 220px !important;
+    height: 220px !important;
+    max-width: 55vw;            /* responsive cap */
+    max-height: 55vw;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  /* ensure summary text centered and readable */
+  .hero-left h1, .hero-left .heading, .hero-left p {
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Social icons under portrait — center them */
+  .hero-right .socials, .profile-socials {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Buttons full width on mobile */
+  .btn, .btn-primary, .btn-outline-pill {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
+/* Projects / cards: single column on small screens */
+@media (max-width: 720px) {
+  .portfolio-wrapper #posts, .cert-grid, .projects-grid, .card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .project-detail.card, .card {
+    padding: 16px !important;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* make video wrapper adapt (16:9 remains) */
+  .video-wrapper, .video-demo .video-wrapper {
+    width: 100%;
+    padding-top: 56.25%; /* maintains ratio */
+  }
+}
+
+/* Contact form: inputs full width, stacked */
+@media (max-width: 720px) {
+  .form-outline-style-v1 .form-group.row .col-lg-6,
+  .form-outline-style-v1 .form-group.row .col-lg-12,
+  .form-outline-style-v1 .form-group.row .col-md-6 {
+    width: 100%;
+    display: block;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .form-outline-style-v1 input.form-control, .form-outline-style-v1 textarea.form-control {
+    width: 100%;
+  }
+}
+
+/* small touch targets (make clickable elements easier to hit) */
+a, .btn {
+  -webkit-tap-highlight-color: rgba(0,0,0,0.08);
+}
+
+/* prevent images from overflowing */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* small helper: reduce big left-right margins on tiny screens */
+@media (max-width: 420px) {
+  .container { width: 94%; padding-left: 8px; padding-right: 8px; }
+  .heading-h2 { font-size: 20px; }
+  .heading-h3 { font-size: 18px; }
+}
