@@ -610,5 +610,87 @@ img {
   .heading-h3 { font-size: 18px; }
 }
 
+/* ---------- Contact grid layout ---------- */
+.contact-section {
+  padding: 60px 20px;
+  background: #f6f7f8; /* subtle bg for the section */
+}
+
+/* container already defined in site; ensure it's centered */
+.contact-section .container { max-width: 1100px; }
+
+/* grid: equal two columns, keep items stretched to equal height */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* equal width columns */
+  gap: 36px;
+  align-items: start; /* ensures titles align to top */
+  align-content: start;
+}
+
+/* Column wrapper */
+.contact-col { display: flex; flex-direction: column; gap: 16px; }
+
+/* Titles */
+.col-title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 900;
+  color: #0b1220;
+  padding-left: 6px;
+}
+
+/* Card shared styling (both left info and right form) */
+.contact-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 26px;
+  box-shadow: 0 8px 30px rgba(11,18,32,0.06);
+  width: 100%;
+  height: 100%;        /* critical: stretch to equal height in grid */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-sizing: border-box;
+}
+
+/* Left info rows */
+.info-row { display: block; margin-bottom: 16px; }
+.info-label { font-weight: 700; color: #111827; margin-bottom: 6px; }
+.info-val { color: #0b1220; font-weight: 400; }
+.info-val a { color: #034ea2; text-decoration: underline; }
+
+/* Form styles */
+.contact-form .form-row { display:flex; flex-direction: column; gap:8px; margin-bottom:14px; }
+.contact-form label { font-weight: 700; color:#111827; }
+.form-control {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #e3e7eb;
+  background: #fbfbfd;
+  font-size: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.form-control:focus {
+  outline: none;
+  border-color: #000;
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.03);
+}
+
+/* Actions row */
+.form-actions { display:flex; gap:12px; align-items:center; justify-content:flex-start; margin-top:6px; }
+.btn-black { background:#000; color:#fff; border:none; padding:10px 20px; border-radius:8px; cursor:pointer; font-weight:700; }
+.btn-black:focus { outline: none; box-shadow: 0 0 0 3px rgba(0,0,0,0.04); }
+
+/* Success text (hidden by default) */
+.form-success { color: #138000; font-weight:700; }
+
+/* ==== Responsive: stack columns on small screens ==== */
+@media (max-width: 880px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 20px; }
+  .col-title { font-size: 24px; text-align: left; }
+  .form-actions { justify-content: center; }
+}
 
 
