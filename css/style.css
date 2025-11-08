@@ -782,3 +782,38 @@ img {
   }
 }
 
+/* HERO - Option A: vertically center both columns */
+.cover-v1 .container,
+.cover-v1 .container > .row {
+  display: flex;
+  align-items: center;      /* <-- centers columns vertically */
+  justify-content: space-between;
+  gap: 32px;
+  min-height: 70vh;         /* increase or decrease to taste */
+}
+
+/* make the left text block vertically center its content too */
+.hero-left, .cover-v1 .hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* <-- centers text vertically inside left column */
+  padding-right: 30px;
+}
+
+/* make sure the right portrait is centered (no extra margin) */
+.hero-right, .cover-v1 .hero-right {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex: 0 0 320px; /* fixed width for portrait column */
+}
+
+/* ensure portrait image is block and no unexpected margins */
+.hero-right img, .profile-photo {
+  margin: 0;
+  display: block;
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 12px;
+}
