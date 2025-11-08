@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Certificate viewer</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  body{background:#05060a;color:#fff;margin:0;font-family:Poppins,system-ui}
+  .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px}
+  .frame{max-width:1100px;width:100%;background:var(--card);padding:12px;border-radius:10px}
+  .frame img{width:100%;height:auto;border-radius:8px;display:block}
+  .actions{display:flex;justify-content:flex-end;gap:8px;margin-bottom:8px}
+  .btn{padding:8px 12px;border-radius:8px;background:#fff;color:#05060a;text-decoration:none}
+</style>
+</head><body>
+<div class="wrap">
+  <div class="frame">
+    <div class="actions">
+      <a id="openImg" class="btn" href="#">Open image</a>
+      <a id="downloadBtn" class="btn" download>Download</a>
+    </div>
+    <img id="img" src="" alt="Certificate">
+  </div>
+</div>
+<script>
+  function qs(name){ const p = new URLSearchParams(location.search); return p.get(name); }
+  const src = qs('img');
+  const img = document.getElementById('img');
+  const openBtn = document.getElementById('openImg');
+  const dl = document.getElementById('downloadBtn');
+  if(src){ img.src = src; openBtn.href = src; dl.href = src; dl.download = src.split('/').pop(); } else { img.alt='No certificate specified'; }
+</script>
+</body></html>

@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MyPortfolio / Mohammed Safwan  M</title>
+  <meta name="description" content="Portfolio — Mohammed Safwan  M — AI & ML | Projects, Internship, Education" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Small override CSS to implement requested changes -->
+  <style>
+    /* 1) Fixed header */
+    /* --- Header visibility & stacking fix --- */
+    .site-header {
+    position: fixed;            /* Always on top, not sticky */
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 72px;
+    background: var(--header-bg);
+    color: #fff;
+    z-index: 9999;              /* Higher than everything else */
+    display: flex;
+    align-items: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+/* Prevent other sections (especially hero) from covering header */
+    .hero, main, section, .hero-grid, .container {
+      position: relative;
+      z-index: 1;                 /* keep below the header */
+    }
+
+    /* add offset so page content does not hide under fixed header */
+    body { 
+      font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      margin: 0;
+      padding-top: 78px; /* adjust to match header height */
+      color: #111;
+      background: #fff;
+    }
+    .header-inner { align-items: center; display:flex; gap:1rem; height:72px; }
+
+    /* 2) Hero summary aligned & constrained */
+    .hero-left { display:flex; flex-direction:column; gap:1rem; }
+    .summary-container {
+      max-width: 740px;
+      background: transparent;
+      padding: 0;
+      margin: 0;
+    }
+    .hero-summary {
+      line-height: 1.6;
+      margin: 0;
+      color: #333;
+      font-size: 1.02rem;
+    }
+
+    /* 3) Button styles — black button with white text (btn-black) */
+    .btn-black, .btn-primary {
+      display: inline-block;
+      padding: 0.65rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: transform .08s ease, box-shadow .12s ease;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+    .btn-black {
+      background: #000;
+      color: #fff;
+    }
+    .btn-black:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0,0,0,0.12); }
+
+    /* optional: alternative white→gray gradient button (commented for now)
+    .btn-gradient {
+      background: linear-gradient(180deg, #fff 0%, #e6e6e6 100%);
+      color: #111;
+      border: 1px solid #ddd;
+    }
+    */
+
+    /* make the CV actions gap tidy */
+    .cv-actions { display:flex; gap:0.75rem; align-items:center; margin-top:0.5rem; }
+
+    /* 4) Projects: switch from large buttons to project cards + black link */
+    .projects-grid {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap:1rem;
+      margin-top:1rem;
+    }
+    .project-card {
+      padding:1rem;
+      border-radius:10px;
+      border: 1px solid #eee;
+      background: #fff;
+      display:flex;
+      flex-direction:column;
+      gap:0.75rem;
+      box-shadow: 0 6px 16px rgba(18,18,18,0.03);
+    }
+    .project-card h4 { margin:0; font-size:1.02rem; }
+    .project-card p { margin:0; color: #666; font-size:0.95rem; }
+
+    .project-link {
+      margin-top:auto;
+      align-self:flex-start;
+      padding:0.5rem 0.85rem;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:600;
+      background:#000;
+      color:#fff;
+    }
+
+    /* 5) Contact send button to black */
+    .contact-actions .btn-primary {
+      background: #000;
+      color: #fff;
+      padding: 0.7rem 1rem;
+      border-radius: 8px;
+      border: none;
+    }
+
+    /* Inputs—slight polish to ensure pleasant spacing */
+    form.contact-form label { display:block; margin-bottom:0.6rem; font-size:0.95rem; color:#222; }
+    form.contact-form input,
+    form.contact-form textarea {
+      width:100%;
+      padding:0.6rem 0.75rem;
+      border-radius:8px;
+      border:1px solid #ddd;
+      font-size:0.95rem;
+      outline: none;
+    }
+    form.contact-form input:focus,
+    form.contact-form textarea:focus { border-color:#bbb; box-shadow: 0 4px 14px rgba(0,0,0,0.04); }
+
+    /* small responsive tweaks */
+    @media (max-width: 880px) {
+      .header-inner { padding: 0 1rem; height: 64px; }
+      body { padding-top: 72px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+      .profile-photo { width: 160px; height:160px; object-fit:cover; border-radius: 10px; }
+    }
+
+  </style>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <div class="brand">MyPortfolio</div>
+
+      <nav class="nav-container" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+          <a href="#home" class="nav-link">Home</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#education" class="nav-link">Education</a>
+          <a href="#internship" class="nav-link">Internship</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#certificates" class="nav-link">Certificates</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+      </nav>
+
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="home" class="hero">
+      <div class="container hero-grid" style="display:grid; grid-template-columns: 1fr 320px; gap:2rem; align-items:center;">
+        <!-- LEFT: summary + actions -->
+        <div class="hero-left">
+          <h1 class="hero-title" style="margin:0 0 .4rem 0; font-size:2rem;">Hey, I’m <span class="accent">Mohammed Safwan</span></h1>
+
+          <div class="summary-container">
+            <p class="hero-summary">
+              I am a passionate professional with a background in Artificial Intelligence and Data Science, skilled in Python, SQL, Machine Learning, Deep Learning, Natural Language Processing, Computer Vision, and Data Analytics. I have a solid foundation in building and understanding AI-driven technologies and a strong interest in creating intelligent, tech-driven solutions that make a real-world impact. I’m eager to grow, collaborate, and contribute to innovative AI initiatives that drive meaningful change.
+            </p>
+          </div>
+
+          <div class="cv-actions">
+            <a href="cv.html" class="btn-outline">View CV</a>
+            <!-- Download CV uses black button with white text per your suggestion -->
+            <a href="safwan-resume.pdf" class="btn-black" download>Download CV</a>
+          </div>
+        </div>
+
+        <!-- RIGHT: portrait + social (icons under portrait per your request) -->
+        <aside class="hero-right" style="display:flex; flex-direction:column; align-items:center; gap:1rem;">
+          <img src="E:\my-portfolio\images\IMG_3743.jpg" alt="Mohammed Safwan" class="profile-photo" style="width:220px; height:220px; object-fit:cover; border-radius:12px;">
+
+          <div class="socials-row" style="display:flex; gap:.6rem;">
+            <a class="social" href="mailto:mohammedsafwan8743@gmail.com" title="Email">✉</a>
+            <a class="social" href="https://www.linkedin.com/in/mohammedsafwan8743/" id="linkedin" title="LinkedIn">in</a>
+            <a class="social" href="https://github.com/mohammedsafwan8743" id="github" title="GitHub">Git</a>
+            <a class="social" href="https://www.instagram.com/ft.shfxxn?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" id="instagram" title="Instagram">Ig</a>
+            <a class="social" href="tel:+916382686750" id="phone" title="Phone">📞</a>
+
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ABOUT (different container color) -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <h2 class="section-title">About</h2>
+        <div class="card about-card">
+          <p>
+            Hello! I’m Mohammed Safwan, an aspiring AI and Data Science professional from Coimbatore with a strong passion for technology, innovation, and problem-solving.
+
+I hold a Bachelor’s degree in Artificial Intelligence and Data Science from Sri Ramakrishna Engineering College, where I developed a strong foundation in modern AI concepts and real-world applications. Over the years, I’ve worked extensively with Python, SQL, and core AI/ML domains such as Machine Learning, Deep Learning, Natural Language Processing, Computer Vision, and Data Analytics.
+
+I’m deeply curious about how intelligent systems can transform everyday challenges into smarter, efficient, and data-driven solutions. I enjoy experimenting with new technologies, learning continuously, and applying my knowledge to create meaningful innovations that contribute to a better, AI-driven future.
+
+Beyond coding and research, I believe in building technology that adds value — whether that’s optimizing a workflow, automating a process, or enabling smarter decision-making through data. I approach every opportunity with curiosity, persistence, and the mindset of lifelong learning.
+
+Currently, I’m looking for opportunities where I can collaborate with passionate teams and work on AI-powered, tech-driven solutions that have a real-world impact.
+
+When I’m not coding or exploring the latest in AI, I enjoy reading about emerging technologies, experimenting with side projects, and staying updated with innovations shaping the tech world.
+
+If you share the same excitement for technology and innovation, I’d love to connect!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION (slightly different color) -->
+    <section id="education" class="section education-section">
+      <div class="container">
+        <h2 class="section-title">Education</h2>
+        <div class="card-list">
+          <div class="card">
+            <h3>B.Tech — Artificial Intelligence & Data Science</h3>
+            <p class="muted">Sri Ramakrishna Engineering College, Coimbatore — 2025</p>
+          </div>
+          <div class="card">
+            <h3>Diploma — Mechanical Engineering</h3>
+            <p class="muted">Nachimuthu Polytechnic College, Pollachi — 2022</p>
+          </div>
+          <div class="card">
+            <h3>SSLC</h3>
+            <p class="muted">Shenbagam Matriculation Higher Secondary School, Pollachi — 2019</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERNSHIP (slightly different color) -->
+    <section id="internship" class="section internship-section">
+      <div class="container">
+        <h2 class="section-title">Internship</h2>
+        <div class="card">
+          <h3>Machine Learning Intern — Daily Day Solutions Pvt. Ltd.</h3>
+          <p class="muted">June 2024 — July 2024</p>
+          <p><b>Technologies:</b> Python, YOLOv8, Roboflow, OpenCV, Deep Learning, Computer Vision</p>
+          <ul>
+            <li>Trained and fine-tuned YOLOv8 object detection models using Roboflow datasets for accurate identification of potholes and speedbreakers from real-world roadway images.</li>
+            <li>Developed a real-time computer vision pipeline in Python and OpenCV to automatically detect road anomalies through live or recorded video feeds.</li>
+            <li>Annotated, augmented, and preprocessed datasets to improve model robustness and handle variations in lighting, angle, and road textures.</li>
+            <li>Achieved reliable detection performance across different environmental conditions such as rain, low light, and uneven road surfaces.</li>
+            <li>Implemented bounding-box visualization for better interpretability and result validation.</li>
+            <li>Optimized model inference speed for real-time deployment on local systems or edge devices.</li>
+            <li>Contributed to a potential smart city solution aimed at improving road safety and maintenance efficiency.</li>
+            <li>Focused on building a cost-effective AI-based road monitoring system for early detection and reporting of road damages.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS: switched to cards with black link buttons -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <h4>Noctivision: AI-Based Flare Removal & Low-Light Vision Enhancement</h4>
+            <p>Developed an AI-powered image enhancement system that removes lens flares and improves visibility in low-light conditions using deep learning. Implemented Uformer architecture with depth estimation in Python and PyTorch for scene restoration and clarity. Designed to enhance night-time surveillance and autonomous vision systems through intelligent exposure correction.</p>
+            <a class="project-link" href="projects/noctivision.html">View project</a>
+          </div>
+
+          <div class="project-card">
+            <h4>Water Management System using IoT & Cloud</h4>
+            <p>Developed an IoT-enabled solution using water flow sensors to monitor and detect pipeline water usage in real time. Integrated cloud storage for secure data logging and remote access, along with automated notifications and call alerts to users in rural areas. Aimed at promoting efficient water utilization and sustainability through smart technology.</p>
+            <a class="project-link" href="projects/water-management.html">View project</a>
+          </div>
+
+          <div class="project-card">
+            <h4>Bike Ignition Cut-Off: AI-Powered Helmet Detection System</h4>
+            <p>Designed an AI-based safety system using a Raspberry Pi camera module and YOLOv5 object detection to identify helmet usage in real time. Integrated the detection output with the bike’s ignition circuit, automatically disabling ignition when a helmet isn’t detected. Aimed at enhancing road safety and promoting responsible driving through smart automation.</p>
+            <a class="project-link" href="projects/bike-ignition.html">View project</a>
+          </div>
+
+          <div class="project-card">
+            <h4>Fabrication of LPG Refrigeration</h4>
+            <p>A mechanical  project focused on designing and fabricating a refrigeration system powered by LPG, eliminating the dependency on electricity. Utilized liquefied petroleum gas as a dual-purpose energy source for both cooking and cooling applications. Built as a sustainable, off-grid solution to provide affordable refrigeration for rural and remote communities.</p>
+            <a class="project-link" href="projects/lpg-refrigeration.html">View project</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS: chips + animated rows -->
+    <!-- SKILLS (replaced: chips + cards with level badges + filter + search) -->
+<section id="skills" class="section skills-section">
+  <div class="container">
+    <h2 class="section-title">Skills</h2>
+
+    <!-- Filters + Search -->
+    <div class="skills-controls" style="display:flex;gap:14px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+      <div class="skill-filters" role="toolbar" aria-label="Filter skills">
+        <!--<button class="filter-btn active" data-filter="all">All</button>-->
+        <!--<button class="filter-btn" data-filter="ml">ML</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="infra">Infra</button>
+        <button class="filter-btn" data-filter="tools">Tools</button>-->
+      </div>
+
+      <!--<div style="margin-right:auto;">
+        <input id="skillSearch" placeholder="Search skills (e.g. Python)" aria-label="Search skills" style="padding:8px 12px;border-radius:10px;border:1px solid rgba(11,18,32,0.06);min-width:200px">
+      </div>
+    </div>-->
+
+    <!-- Chips (quick click) --
+    <div class="skills-chips" id="skillsChips" aria-label="Skills list" style="margin-bottom:14px">
+      !-- chips are interactive and map to cards below --
+      <div class="skill-chip" data-skill="Python" data-cat="ml,tools">Python</div>
+      <div class="skill-chip" data-skill="SQL" data-cat="infra,tools">SQL</div>
+      <div class="skill-chip" data-skill="Machine Learning" data-cat="ml">Machine Learning</div>
+      <div class="skill-chip" data-skill="Computer Vision" data-cat="ml">Computer Vision</div>
+      <div class="skill-chip" data-skill="Git / GitHub" data-cat="tools">Git / GitHub</div>
+      <div class="skill-chip" data-skill="FastAPI" data-cat="web">FastAPI</div>
+      <div class="skill-chip" data-skill="PyTorch" data-cat="ml">PyTorch</div>
+      <div class="skill-chip" data-skill="NLP" data-cat="ml">NLP</div>
+      <div class="skill-chip" data-skill="Docker" data-cat="infra,tools">Docker</div>
+      <div class="skill-chip" data-skill="FAISS" data-cat="tools">FAISS</div>
+    </div>-->
+
+    <!-- Skill cards grid -->
+    <div id="skillsGrid" class="skills-grid" aria-live="polite">
+      <!-- Each card: data-name, data-cat, data-level (beginner/intermediate/advanced) -->
+      <div class="skill-card" data-name="Python" data-cat="ml,tools" data-level="advanced">
+        <div class="skill-card-head">
+          <strong>Python</strong>
+          
+        </div>
+        <div class="skill-card-body">Proficient in Python with hands-on experience in projects.</div>
+      </div>
+
+      <div class="skill-card" data-name="SQL" data-cat="infra,tools" data-level="advanced">
+        <div class="skill-card-head">
+          <strong>SQL</strong>
+          
+        </div>
+        <div class="skill-card-body">Proficient in SQL through coursework and hands-on practice in database querying and management.</div>
+      </div>
+
+      <div class="skill-card" data-name="Machine Learning" data-cat="ml" data-level="intermediate">
+        <div class="skill-card-head">
+          <strong>Machine Learning</strong>
+         
+        </div>
+        <div class="skill-card-body">Proficient in Machine Learning through internships, academic projects, and hands-on implementation.</div>
+      </div>
+
+      <div class="skill-card" data-name="Computer Vision" data-cat="ml" data-level="intermediate">
+        <div class="skill-card-head">
+          <strong>Computer Vision</strong>
+          
+        </div>
+        <div class="skill-card-body">Skilled in Computer Vision, gained through academic projects and practical learning.</div>
+      </div>
+
+      <div class="skill-card" data-name="Deep Learning" data-cat="ml" data-level="intermediate">
+        <div class="skill-card-head">
+          <strong>Deep Learning</strong>
+          
+        </div>
+        <div class="skill-card-body">Proficient in Deep Learning with academic and hands-on experience building and optimizing neural network models.</div>
+      </div>
+
+      <div class="skill-card" data-name="Data Visualization" data-cat="ml" data-level="intermediate">
+        <div class="skill-card-head">
+          <strong>Data Visualization</strong>
+          
+        </div>
+        <div class="skill-card-body">Proficient in Data Visualization through project-based learning, focused on delivering clear, data-driven insights.</div>
+      </div>
+
+      <div class="skill-card" data-name="Data Analytics" data-cat="ml" data-level="intermediate">
+        <div class="skill-card-head">
+          <strong>Data Analytics</strong>
+          
+        </div>
+        <div class="skill-card-body">Experienced in Data Analytics, transforming raw data into meaningful patterns and insights that support informed decision-making.</div>
+      </div>
+
+      <div class="skill-card" data-name="Git / GitHub" data-cat="tools" data-level="advanced">
+        <div class="skill-card-head">
+          <strong>Git / GitHub</strong>
+          
+        </div>
+        <div class="skill-card-body">Hands-on experience with Git and GitHub for source control and teamwork during project development.</div>
+      </div>
+
+    
+
+
+      <div class="skill-card" data-name="Natural Language Processing" data-cat="ml" data-level="intermediate">
+        <div class="skill-card-head">
+          <strong>Natural Language Processing</strong>
+          
+        </div>
+        <div class="skill-card-body">Proficient in NLP through academic learning and practical projects involving text analysis and automation.</div>
+      </div>
+
+
+  </div>
+</section>
+
+
+    <!-- CERTIFICATES: buttons; clicking opens certificate viewer -->
+    <!-- CERTIFICATES SECTION -->
+<section id="certificates" class="section certificates-section">
+  <div class="container">
+    <h2 class="section-title">Certificates</h2>
+
+    
+
+    <!-- Certificate cards grid -->
+    <div id="certGrid" class="cert-grid">
+
+      <!-- Card 1 -->
+      <div class="cert-card" data-cat="ai" data-name="SQL complete Bootcamp From Basics to Advanced">
+        <div class="cert-thumb">
+          <img src="images/sqlcertificate.png" alt="SQL complete Bootcamp From Basics to Advanced">
+        </div>
+        <div class="cert-info">
+          <h3>SQL complete Bootcamp From Basics to Advanced</h3>
+          <p>Certification by Udemy — Gained strong proficiency in querying, managing, and analyzing relational databases.</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="cert-card" data-cat="data" data-name="Data Visualization using Power BI">
+        <div class="cert-thumb">
+          <img src="images/Mohammed_Safwan_M20240919-73-mpo33l.jpg" alt="Power BI Certificate">
+        </div>
+        <div class="cert-info">
+          <h3>Data Visualization using Power BI</h3>
+          <p>Certification by Great Learning — created dashboards and reports for real-world datasets.</p>
+        </div>
+      </div>
+      <div class="cert-card" data-cat="web" data-name="Data Analytics and Visualization job simulation">
+        <div class="cert-thumb">
+          <img src="images/accenturecertificate.png" alt="Data Analytics and Visualization job simulation">
+        </div>
+        <div class="cert-info">
+          <h3>Data Analytics and Visualization job simulation</h3>
+          <p>Certificate by Accenture issued by Forage — Gained practical experience in data analysis and visualization.</p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+    <!-- CONTACT: card (left) + professional form (right) -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem;">
+          <div class="card contact-card">
+            <p><strong>Name</strong><br>Mohammed Safwan M</p>
+            <p><strong>Email</strong><br><a href="mailto:mohammedsafwan8743@gmail.com">mohammedsafwan8743@gmail.com</a></p>
+            <p><strong>Phone</strong><br><a href="tel:+916382686750">+91 63826 86750</a></p>
+            <p><strong>LinkedIn</strong><br><a href="https://www.linkedin.com/in/mohammedsafwan8743/" id="contactLinkedin">linkedin.com/in/mohammedsafwan8743</a></p>
+            <p><strong>GitHub</strong><br><a href="https://github.com/mohammedsafwan8743" id="contactGithub">github.com/mohammedsafwan8743</a></p>
+            <p><strong>Location</strong><br>Coimbatore, Tamil Nadu</p>
+          </div>
+
+          <form id="contactForm" class="card contact-form" novalidate>
+            <label>Name<input name="name" required placeholder="Your full name"></label>
+            <label>Email<input type="email" name="email" required placeholder="you@example.com"></label>
+            <label>Phone<input name="phone" type="tel" placeholder="+91 XXXXX XXXXX"></label>
+            <label>Message<textarea name="message" rows="6" required placeholder="Write your message..."></textarea></label>
+            <div class="contact-actions">
+              <button type="submit" class="btn-primary">Send message</button>
+            </div>
+            <p id="formStatus" class="muted small" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© <span id="year"></span> Mohammed Safwan  M — Designed & Built with passion and precision.</div>
+  </footer>
+
+  <script>
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // simple contact form behaviour (demo only; you might hook this to your backend)
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const status = document.getElementById('formStatus');
+      status.textContent = 'Sending message...';
+      // simulate send
+      setTimeout(() => { status.textContent = 'Message sent. Thank you!'; }, 700);
+    });
+
+    // nav toggle: keep existing behavior if you have JS in js/main.js
+    (function(){
+      const btn = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('.nav-inner');
+      if(btn){
+        btn.addEventListener('click', ()=> nav.classList.toggle('open'));
+      }
+    })();
+  </script>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

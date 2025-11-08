@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Noctivision — Project — Mohammed Safwan M</title>
+<link rel="stylesheet" href="../css/style.css">
+
+<style>
+  /* small page-level tweaks for video */
+  .project-detail { position:relative; padding:22px; max-width:1100px; margin:auto; }
+  .video-demo { margin-top:20px; }
+  .video-demo h4 { margin:0 0 10px 0; font-size:18px; }
+  .video-player {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    background: #000;
+    display:block;
+  }
+  .video-actions { margin-top:8px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .video-actions a { color: var(--accent, #0ea5a4); text-decoration:none; font-weight:700; }
+  /* mobile */
+  @media (max-width:720px){
+    .project-detail{padding:14px}
+  }
+</style>
+</head><body>
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="brand">MyPortfolio / <strong>Mohammed Safwan M</strong></div>
+    <nav class="nav-container"><div class="nav-inner"><a href="../index.html" class="nav-link">Home</a></div></nav>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container">
+    <div class="project-detail card">
+      <a href="https://github.com/mohammedsafwan8743/NoctiVision---AI-Based-Flare-Removal-and-Low-Light-Vision-Enhancement-System" style="position:absolute;right:18px;top:18px;color:var(--accent);font-weight:700;text-decoration:none" target="_blank" rel="noopener" aria-label="Open project on GitHub">View on GitHub ↗</a>
+
+      <h1 style="margin-top:0;font-size:26px;font-weight:900">Noctivision</h1>
+      <p style="color:var(--muted)">AI-Based Flare Removal and Low-Light Vision Enhancement</p>
+
+      <ul style="margin-top:14px;color:var(--text)">
+        <li>Developed an AI-powered computer vision model to enhance image clarity in low-light conditions.</li>
+        <li>Implemented <strong>Uformer architecture</strong> with <strong>depth estimation</strong> using <strong>Python</strong> and <strong>PyTorch</strong>.</li>
+        <li>Removed lens flares and improved visibility for night-time scenes and dark environments.</li>
+        <li>Applied advanced exposure correction techniques to restore scene details and contrast.</li>
+        <li>Optimized for <strong>night-time surveillance</strong>, <strong>autonomous vision systems</strong>, and <strong>low-light photography</strong>.</li>
+      </ul>
+
+      <!-- VIDEO -->
+      <div class="video-demo">
+        <h4>🎬 Project Demo</h4>
+
+        <!-- video element: multiple source fallbacks -->
+        <video controls class="video-player" preload="metadata" playsinline loading="lazy">
+          <!-- try relative path from this file (projects/noctivision.html -> ../videos/filename.mp4) -->
+          <source src="../videos/1747461632042.mp4" type="video/mp4">
+          <!-- fallback to root /videos/ in case you serve from site root -->
+          <source src="/videos/1747461632042.mp4" type="video/mp4">
+          <!-- fallback to same-folder (projects/videos/) kept here intentionally if you put videos under projects/videos -->
+          <source src="videos/1747461632042.mp4" type="video/mp4">
+          Your browser does not support the video tag. <br>
+          <a href="../videos/1747461632042.mp4" target="_blank" rel="noopener">Open video directly</a>
+        </video>
+
+        <div class="video-actions">
+          <!-- direct debug link -->
+          <!-- <a href="../videos/1747461632042.mp4" target="_blank" rel="noopener">Open raw video file</a> -->
+          <a href="../videos/1747461632042.mp4" download>Download video</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+</body></html>

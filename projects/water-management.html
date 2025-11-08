@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Water Management — Project — Mohammed Safwan M</title>
+<link rel="stylesheet" href="../css/style.css">
+
+<style>
+  .project-detail {
+    position: relative;
+    padding: 22px;
+    max-width: 1100px;
+    margin: auto;
+  }
+
+  .video-demo {
+    margin-top: 20px;
+  }
+
+  .video-demo h4 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+  }
+
+  .video-player {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    background: #000;
+    display: block;
+  }
+
+  .video-actions {
+    margin-top: 8px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .video-actions a {
+    color: var(--accent, #0ea5a4);
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .video-actions a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width:720px) {
+    .project-detail { padding: 14px; }
+  }
+</style>
+</head>
+
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="brand">MyPortfolio / <strong>Mohammed Safwan M</strong></div>
+    <nav class="nav-container">
+      <div class="nav-inner"><a href="../index.html" class="nav-link">Home</a></div>
+    </nav>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container">
+    <div class="project-detail card">
+
+      <!-- GitHub link -->
+      <a href="https://github.com/mohammedsafwan8743/Water-Management-using-IoT-and-Cloud" style="position:absolute;right:18px;top:18px;color:var(--accent);font-weight:700;text-decoration:none"
+         target="_blank" rel="noopener">View on GitHub ↗</a>
+
+      <!-- Project title -->
+      <h1 style="margin-top:0;font-size:26px;font-weight:900">Water Management System</h1>
+      <p style="color:var(--muted)">IoT sensors, cloud storage, and real-time alerts for managing water flow.</p>
+
+      <!-- Description -->
+      <ul style="margin-top:14px;color:var(--text)">
+        <li>Developed an <strong>IoT-enabled solution</strong> using water flow sensors to monitor and detect water usage in real time.</li>
+        <li>Integrated <strong>cloud storage</strong> for secure data logging, analytics, and remote access.</li>
+        <li>Implemented <strong>automated notifications</strong> and alert calls for efficient water management.</li>
+        <li>Focused on <strong>rural resource optimization</strong> and <strong>sustainable water usage</strong>.</li>
+        <li>Designed the system to promote <strong>smart resource monitoring</strong> and reduce wastage.</li>
+      </ul>
+
+  
+      <!-- ✅ Video Section -->
+      <div class="video-demo">
+        <h4>🎬 Project Demo</h4>
+
+        <video controls class="video-player" preload="metadata" playsinline loading="lazy" poster="../images/project_water.jpg">
+          <!-- ✅ Path to video (make sure file exists in /videos/) -->
+          <source src="../videos/IMG_1792 (1).mp4" type="video/mp4">
+          <source src="/videos/IMG_1792 (1).mp4" type="video/mp4">
+          <source src="videos/IMG_1792 (1).mp4" type="video/mp4">
+          Your browser does not support the video tag.
+          <a href="../videos/IMG_1792 (1).mp4" target="_blank" rel="noopener">Open video directly</a>
+        </video>
+
+        <div class="video-actions">
+          <!--<a href="../videos/IMG_1792 (1).mp4" target="_blank" rel="noopener">Open raw video file</a>-->
+          <a href="../videos/IMG_1792 (1).mp4" download>Download video</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>
