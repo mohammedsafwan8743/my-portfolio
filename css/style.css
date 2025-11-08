@@ -95,7 +95,7 @@ body { padding-top: 72px; }
   .nav-inner{display:none}
 }
 
-.hero-title{font-size:34px;margin:0 0 8px 0;line-height:1.05}
+.hero-title{font-size:36px;margin:0 0 8px 0;line-height:1.05}
 .accent{color:var(--accent);font-weight:700}
 .hero-summary{
   color:var(--muted);
