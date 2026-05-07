@@ -266,19 +266,15 @@
     0% { filter: hue-rotate(0deg); }
     100% { filter: hue-rotate(360deg); }
   }
-  .profile-img img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
+  
   .photo-inner {
     position: relative; z-index: 1;
     width: 100%; height: 100%;
     background: var(--surface);
     border-radius: 23px;
+    object-fit: cover;
     overflow: hidden;
-    display: flex; align-items: center; justify-content: center;
+    display: block; align-items: center; justify-content: center;
   }
   .photo-inner img {
     width: 100%; height: 100%;
